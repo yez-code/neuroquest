@@ -1,0 +1,332 @@
+/* NeuroQuest 樣式：可愛復古像素 RPG 風格。像素感只用在標題、邊框與遊戲介面；內文維持易讀的中文字型。 */
+
+:root {
+  --bg: #fbf7ef;
+  --ink: #2b2250;
+  --primary: #3b2f6b;
+  --lavender: #e4dbf7;
+  --lavender-d: #b9a7e8;
+  --sky: #dceff8;
+  --mint: #d3f0e1;
+  --coral: #ff7a70;
+  --gold: #f2b600;
+  --line: #3b2f6b;
+  --pixel: 4px;
+  --font-body: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", "Heiti TC", system-ui, sans-serif;
+  --font-pixel: "Courier New", ui-monospace, Menlo, Consolas, monospace;
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.75;
+  overflow-x: hidden;
+}
+
+#app { max-width: 920px; margin: 0 auto; padding: 16px 16px 48px; }
+#app:focus { outline: none; }
+
+a { color: var(--primary); }
+
+:focus-visible { outline: 3px solid var(--coral); outline-offset: 3px; }
+
+.skip-link {
+  position: absolute; left: 8px; top: -60px; background: var(--ink); color: #fff;
+  padding: 8px 12px; z-index: 10;
+}
+.skip-link:focus { top: 8px; }
+
+/* ---------- Header / Footer ---------- */
+
+.site-header {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 16px;
+  padding: 14px 16px; background: var(--primary); color: #fff;
+  border-bottom: var(--pixel) solid var(--ink);
+}
+.logo {
+  font-family: var(--font-pixel); font-weight: 700; font-size: 1.5rem; letter-spacing: 0.08em;
+  color: #fff; text-decoration: none;
+}
+.logo span { color: var(--gold); }
+.tagline { margin: 0; font-size: 0.95rem; color: var(--lavender); }
+
+.site-footer {
+  padding: 20px 16px; text-align: center; font-size: 0.85rem; color: #5a5080;
+  border-top: 2px dashed var(--lavender-d);
+}
+.site-footer p { margin: 0; }
+
+/* ---------- 共用元件 ---------- */
+
+.pixel-title {
+  font-family: var(--font-pixel); font-size: clamp(1.9rem, 7vw, 2.8rem); letter-spacing: 0.06em;
+  margin: 8px 0; line-height: 1.2; text-shadow: 3px 3px 0 var(--lavender-d);
+}
+.pixel-title.small { font-size: clamp(1.4rem, 5.5vw, 2rem); }
+
+h2 { font-size: 1.25rem; margin: 0 0 8px; }
+
+.panel {
+  background: #fff; border: var(--pixel) solid var(--line);
+  box-shadow: var(--pixel) var(--pixel) 0 var(--lavender-d);
+  padding: 16px 18px; margin: 20px 0;
+}
+
+.btn {
+  display: inline-block; font: inherit; font-weight: 700; cursor: pointer; text-decoration: none; text-align: center;
+  background: var(--lavender); color: var(--ink);
+  border: 3px solid var(--line); box-shadow: 3px 3px 0 var(--line);
+  padding: 10px 18px; min-height: 44px;
+}
+.btn:hover { background: #d6c9f5; }
+.btn:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--line); }
+.btn.small { padding: 6px 12px; min-height: 40px; font-size: 0.92rem; }
+.btn.primary { background: var(--gold); }
+.btn[disabled] { background: #e5e1ee; color: #6d6788; cursor: not-allowed; box-shadow: 3px 3px 0 #a9a3c0; border-color: #a9a3c0; }
+
+.hint { font-size: 0.9rem; color: #5a5080; margin: 8px 0 0; }
+
+/* ---------- 首頁 ---------- */
+
+.hero { text-align: center; padding: 24px 4px 8px; }
+.lead { max-width: 34em; margin: 8px auto 0; }
+
+.section-heading {
+  font-family: var(--font-pixel); letter-spacing: 0.08em; margin: 28px 0 14px;
+  border-left: 8px solid var(--gold); padding-left: 10px;
+}
+
+.map { list-style: none; margin: 0; padding: 0; display: grid; gap: 18px; grid-template-columns: 1fr; }
+
+.stage {
+  display: flex; flex-direction: column; align-items: center; gap: 4px; height: 100%;
+  padding: 16px 14px 18px; text-align: center; text-decoration: none; color: var(--ink);
+  border: var(--pixel) solid var(--line); box-shadow: var(--pixel) var(--pixel) 0 var(--line);
+}
+.stage.open { background: var(--mint); }
+.stage.open:hover { background: #c3ebd5; }
+.stage.locked { background: #ece9f3; border-style: dashed; color: #6d6788; box-shadow: none; cursor: not-allowed; }
+
+.stage-no { font-family: var(--font-pixel); font-weight: 700; font-size: 0.85rem; letter-spacing: 0.1em; }
+.stage-title { font-weight: 700; font-size: 1.2rem; }
+.stage-en { font-family: var(--font-pixel); font-size: 0.9rem; }
+.stage-status {
+  margin-top: 6px; padding: 2px 10px; font-size: 0.85rem; font-weight: 700; border: 2px solid var(--line); background: #fff;
+}
+.status-locked { border-color: #8c85a6; color: #6d6788; }
+.stage-stars { font-size: 0.95rem; }
+.stars { color: var(--gold); font-size: 1.2rem; letter-spacing: 0.1em; -webkit-text-stroke: 0.5px #8a6a00; }
+
+.monster { width: 96px; height: 72px; margin: 6px 0; animation: bob 1.6s steps(2, end) infinite; }
+@keyframes bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+
+/* ---------- 章節筆記頁 ---------- */
+
+.back-link { display: inline-block; margin: 8px 0; font-weight: 700; padding: 8px 0; }
+
+.note-header { margin: 8px 0 4px; }
+.en-title { font-family: var(--font-pixel); margin: 0; font-size: 1.1rem; color: #5a5080; }
+.source-note { font-size: 0.9rem; background: #fff6d6; border-left: 6px solid var(--gold); padding: 8px 12px; margin: 12px 0 0; }
+
+.toc h2 { font-family: var(--font-pixel); }
+.toc-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr; gap: 4px; }
+.toc-link {
+  font: inherit; text-align: left; width: 100%; min-height: 44px; padding: 6px 10px; cursor: pointer;
+  background: var(--sky); border: 2px solid transparent; color: var(--ink);
+}
+.toc-link:hover { border-color: var(--line); background: #c9e6f4; }
+
+.controls { display: flex; gap: 10px; flex-wrap: wrap; margin: 4px 0 12px; }
+
+.group-heading {
+  font-size: 1.1rem; margin: 28px 0 10px; padding: 6px 12px; color: #fff; background: var(--primary);
+  border: 3px solid var(--ink);
+}
+
+.note-section { background: #fff; border: 3px solid var(--line); margin: 10px 0; }
+.note-section summary {
+  display: flex; gap: 12px; align-items: baseline; cursor: pointer; padding: 12px 14px; min-height: 48px;
+  font-weight: 700; background: var(--lavender); list-style: none;
+}
+.note-section summary::-webkit-details-marker { display: none; }
+.note-section summary::after { content: "＋"; margin-left: auto; font-family: var(--font-pixel); }
+.note-section[open] summary::after { content: "－"; }
+.sec-no { font-family: var(--font-pixel); background: var(--primary); color: #fff; padding: 0 8px; flex: none; }
+.sec-title small { font-weight: 400; color: #5a5080; font-size: 0.85rem; }
+
+.note-body { padding: 8px 18px 16px; overflow-wrap: anywhere; }
+.note-body ul, .note-body ol { padding-left: 1.3em; margin: 8px 0; }
+.note-body li { margin: 6px 0; }
+.note-body p { margin: 10px 0; }
+
+.callout { background: #fff6d6; border: 2px dashed #c99a00; padding: 8px 14px; margin: 14px 0; }
+.callout p { margin: 4px 0; }
+.callout-title { display: block; }
+
+.table-wrap { overflow-x: auto; margin: 12px 0; border: 2px solid var(--line); }
+.table-wrap:focus-visible { outline-offset: 0; }
+table { border-collapse: collapse; width: 100%; min-width: 520px; font-size: 0.95rem; }
+th, td { border: 1px solid var(--lavender-d); padding: 8px 10px; vertical-align: top; text-align: left; }
+thead th { background: var(--primary); color: #fff; }
+tbody th { background: var(--sky); font-weight: 700; }
+
+.flow { margin: 12px 0; display: grid; gap: 12px; }
+.flow-row { display: grid; gap: 4px; }
+.flow-steps { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.flow-chip { background: var(--mint); border: 2px solid var(--line); padding: 2px 10px; font-size: 0.92rem; }
+.flow-arrow { font-family: var(--font-pixel); font-weight: 700; }
+
+.diagram { margin: 16px 0; }
+.diagram-box { border: 2px solid var(--line); background: #fff; padding: 6px; overflow-x: auto; }
+.diagram svg { display: block; width: 100%; min-width: 520px; height: auto; font-family: var(--font-body); }
+.diagram figcaption { font-size: 0.85rem; color: #5a5080; margin-top: 6px; }
+.dg-pre { fill: var(--lavender); stroke: var(--line); stroke-width: 3; }
+.dg-post { fill: var(--sky); stroke: var(--line); stroke-width: 3; }
+.dg-vesicle { fill: var(--mint); stroke: var(--line); stroke-width: 2; }
+.dg-dot { fill: var(--primary); }
+.dg-channel { fill: var(--gold); stroke: var(--line); stroke-width: 2; }
+.dg-transporter { fill: var(--mint); stroke: var(--line); stroke-width: 2; }
+.dg-receptor { fill: var(--coral); stroke: var(--line); stroke-width: 2; }
+.dg-line { stroke: var(--line); stroke-width: 3; fill: none; }
+.dg-arrow-head { fill: var(--line); }
+.dg-title { font-size: 14px; font-weight: 700; fill: var(--ink); }
+.dg-label, .dg-step, .dg-gap { font-size: 13px; fill: var(--ink); }
+.dg-step { font-weight: 700; }
+.dg-gap { fill: #5a5080; }
+
+.challenge { text-align: center; background: var(--mint); }
+
+.notice { background: #fff6d6; padding: 12px; border: 2px dashed #c99a00; }
+
+/* ---------- 響應式 ---------- */
+
+@media (min-width: 640px) {
+  .map { grid-template-columns: repeat(2, 1fr); }
+  .toc-list { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 860px) {
+  .map { grid-template-columns: repeat(4, 1fr); }
+}
+
+/* ---------- 減少動態 ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
+
+/* ---------- 測驗頁 ---------- */
+
+.quiz-top { margin: 8px 0 0; }
+.quiz-progress { font-family: var(--font-pixel); font-weight: 700; margin: 4px 0; }
+.progress-bar { height: 14px; border: 3px solid var(--line); background: #fff; }
+.progress-fill { display: block; height: 100%; background: var(--gold); }
+
+.question-card { margin-top: 14px; }
+.q-tag {
+  display: inline-block; font-size: 0.85rem; font-weight: 700; padding: 0 10px;
+  background: var(--primary); color: #fff; border: 2px solid var(--ink);
+}
+.question-text { font-size: 1.2rem; line-height: 1.6; margin: 10px 0 14px; }
+.question-text:focus { outline: none; }
+
+.options { display: grid; gap: 10px; }
+.option {
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap; cursor: pointer;
+  min-height: 52px; padding: 10px 12px; background: #fff; border: 3px solid var(--line);
+}
+.option:hover { background: var(--sky); }
+.option input { width: 22px; height: 22px; flex: none; accent-color: var(--primary); }
+.option:focus-within { outline: 3px solid var(--coral); outline-offset: 3px; }
+.option-key {
+  font-family: var(--font-pixel); font-weight: 700; flex: none; min-width: 1.6em; text-align: center;
+  background: var(--lavender); border: 2px solid var(--line);
+}
+.option-text { flex: 1 1 12em; overflow-wrap: anywhere; }
+.option-mark { flex: none; font-weight: 700; font-size: 0.9rem; }
+.option.is-correct { background: var(--mint); border-width: 4px; }
+.option.is-wrong { background: #ffe1de; border-style: dashed; border-width: 4px; }
+.option input:disabled { cursor: default; }
+
+.feedback { margin-top: 16px; padding: 10px 14px; border: 3px solid var(--line); }
+.feedback:focus { outline: 3px solid var(--coral); outline-offset: 3px; }
+.feedback.is-correct { background: var(--mint); }
+.feedback.is-wrong { background: #ffe1de; }
+.feedback p { margin: 6px 0; }
+.feedback-title { font-size: 1.1rem; }
+.source-ref { font-size: 0.88rem; color: #5a5080; }
+
+.quiz-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 16px; }
+.result { text-align: center; background: var(--mint); }
+.result .quiz-actions { justify-content: center; }
+.result-score { font-size: 1.4rem; }
+.result-score strong { font-family: var(--font-pixel); font-size: 2rem; }
+
+/* ---------- 怪獸戰鬥（Phase 4） ---------- */
+
+.battle { display: flex; align-items: center; gap: 14px; background: var(--sky); padding: 10px 14px; margin: 14px 0; }
+.monster-wrap { flex: none; width: 88px; display: flex; justify-content: center; }
+.monster-wrap .monster { width: 88px; height: 66px; margin: 0; transform-origin: 50% 100%; }
+.battle-info { flex: 1; min-width: 0; }
+.monster-name { display: block; }
+.hp-bar { position: relative; height: 18px; border: 3px solid var(--line); background: #fff; margin: 6px 0; }
+.hp-fill { display: block; height: 100%; width: 100%; background: var(--coral); transition: width 0.45s steps(8, end); }
+.hp-line { position: absolute; top: -6px; bottom: -6px; width: 3px; background: var(--ink); }
+.hp-text { font-family: var(--font-pixel); font-weight: 700; margin: 0; }
+.battle-note { margin: 2px 0 0; font-size: 0.85rem; color: #5a5080; line-height: 1.5; }
+
+/* 答對：怪獸晃動並閃爍（結束後移除 class，回到待機動畫） */
+.monster-wrap.hit .monster { animation: nq-hit 0.45s steps(6, end) 1; }
+@keyframes nq-hit {
+  0%   { transform: translateX(0); filter: none; }
+  20%  { transform: translateX(-8px); filter: brightness(2.2); }
+  40%  { transform: translateX(8px); filter: none; }
+  60%  { transform: translateX(-6px); filter: brightness(2.2); }
+  80%  { transform: translateX(4px); filter: none; }
+  100% { transform: translateX(0); filter: none; }
+}
+
+/* 勝利：怪獸倒下（最終狀態寫在靜態樣式，動畫只是過程；關閉動畫時仍是倒下的樣子） */
+.monster-wrap.defeated .monster {
+  transform: rotate(80deg) translateY(10px); opacity: 0.35; filter: grayscale(0.8);
+  animation: nq-fall 0.9s ease-out backwards;
+}
+@keyframes nq-fall { from { transform: none; opacity: 1; filter: none; } }
+
+/* 失敗：怪獸仍站著，輕輕跳動 */
+.monster-wrap.standing .monster { animation: nq-taunt 1s steps(2, end) infinite; }
+@keyframes nq-taunt { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+
+/* ---------- 結算與錯題回顧 ---------- */
+
+.result.is-fail { background: #fff6d6; }
+.result-stars { font-size: 2.6rem; line-height: 1.2; letter-spacing: 0.15em; margin: 4px 0; }
+.star.on { display: inline-block; color: var(--gold); -webkit-text-stroke: 1px #8a6a00; animation: nq-pop 0.5s ease-out backwards; }
+.star.off { color: #8c85a6; }
+@keyframes nq-pop { from { transform: scale(0) rotate(-40deg); opacity: 0; } 60% { transform: scale(1.4); } }
+.result-message { font-weight: 700; margin: 6px 0 10px; }
+.result.is-fail .result-message { animation: nq-nudge 0.5s 1; }
+@keyframes nq-nudge { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-4px); } 75% { transform: translateX(4px); } }
+.result-line { margin: 4px 0; }
+.stars { color: var(--gold); letter-spacing: 0.1em; -webkit-text-stroke: 0.5px #8a6a00; }
+.new-record { display: inline-block; margin-left: 10px; padding: 0 10px; font-weight: 700; background: var(--gold); border: 2px solid var(--line); }
+
+.review h2 { margin-bottom: 4px; }
+.wrong-list { list-style: none; margin: 12px 0 0; padding: 0; display: grid; gap: 12px; }
+.wrong-item { border: 3px solid var(--line); background: #fff; padding: 8px 14px 10px; }
+.wrong-item h3 { margin: 4px 0; font-size: 1rem; }
+.wrong-item p { margin: 6px 0; }
+.wrong-question { font-weight: 700; }
+.all-correct { font-weight: 700; margin: 8px 0 0; }
+
+@media (max-width: 420px) {
+  .monster-wrap { width: 64px; }
+  .monster-wrap .monster { width: 64px; height: 48px; }
+  .battle { gap: 10px; padding: 8px 10px; }
+}
